@@ -1,0 +1,21 @@
+[project]
+name = "Nested"
+description = "Application core for multiple project management"
+authors = [
+    { name = "Takanori Kono", email = "takanori.kono@gmail.com" }
+]
+require-python = ">=3.10"
+dependencies = [
+    "typer",
+    "import-linter",
+]
+
+[build-system]
+requires = [ "hatchling" ]
+build-backend = "hatchling.build"
+
+[tool.hatchling.build.targets.wheel]
+packages = [ "src/nested" ]
+
+[project.scripts]
+nested-cli = "nested.cli.main:main"
