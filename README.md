@@ -1,2 +1,2 @@
 # Nested
-Nested: Application core for multiple project management
+Application core for multiple project management
