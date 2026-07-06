@@ -1,0 +1,11 @@
+[import-linter]
+root_packages = nested
+
+[import-linter:contract:layers:my-layers]
+name = my-layers
+layers = 
+  cli
+  app
+  service
+  model
+  
