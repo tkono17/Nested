@@ -1,16 +1,13 @@
 from enum import Enum
-from dataclasses import dataclass
-from .utilities import Date, DateTime
+from sqlmodel import SQLModel, Field
+from .utilities import Status
 
-
-@dataclass
-class Project:
-    name: str
-    description: str
-    author: str
-    areaId: int
-    statusId: int
-    startDate: Date | None = None
-    dueDate: Date | None = None
-    createTime: DateTime | None = None
-    updateTime: DateTime | None = None
+class ProjectBase(SQLModel):
+    name: str = Field(index=True)
+    description: str = Field(index=True)
+    areaId: int = Field(index=True)
+    statusId: int = Field(index=True, default=Status.NOT_STARTED)
+    startDate: str | None = None
+    dueDate: str | None = None
+    createTime: str | None = None
+    updateTime: str | None = None

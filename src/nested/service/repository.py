@@ -1,11 +1,16 @@
-class CommentRepository:
-    pass
+from __future__ import annotations
 
-class TaskRepository:
+class AreaRepository:
     pass
 
 class ProjectRepository:
     pass
 
-class AreaRepository:
+class TaskTypeRepository:
+    pass
+
+class TaskRepository:
+    pass
+
+class CommentRepository:
     pass

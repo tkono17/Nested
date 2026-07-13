@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from enum import IntEnum
 import re
 
 @dataclass
@@ -41,9 +42,9 @@ class DateTime:
         return y
 
 @dataclass
-class Status(Enum):
+class Status(IntEnum):
     NOT_STARTED = 1
     ACTIVE = 2
     DONE = 3
     INVALID = 4
-    ABANDONED = 5
+    TERMINATED = 5

@@ -1,22 +1,8 @@
 from enum import Enum
-from dataclasses import dataclass
-from .utilities import Date, DateTime
-
-@dataclass
-class TaskType:
-    name: str
-    description: str
-
-@dataclass
-class Comment:
-    author: str
-    contents: str
-    taskId: int
-    createTime: DateTime
-    updateTime: DateTime
+from sqlmodel import SQLModel, Field
+from .utilities import Status
 
 # Task type: design, development, test, validation, bookkeeping, documentation, debug, thinking
-@dataclass
 class Task:
     name: str
     description: str

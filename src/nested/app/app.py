@@ -1,4 +1,7 @@
 from dataclasses import dataclass
+from ..service import (
+    AreaRepository, ProjectRepository, TaskTypeRepository, TaskRepository, CommentRepository
+)
 
 class App:
     def __init__(self):
@@ -10,6 +13,14 @@ class App:
         self.currentProject = None
         self.currentTask = None
         self.currentComment = None
+        #
+        self.dataRepositories = {
+            'Area': AreaRepository(),
+            'Project': ProjectRepository(),
+            'TaskType': TaskTypeRepository(),
+            'Task': TaskRepository(),
+            'Comment': CommentRepository(),
+        }
         pass
 
     def findAreas(self, name: str|None = None, 
@@ -21,9 +32,8 @@ class App:
         if y is not None: self.currentArea = y
         return y
 
-        return y
-
-    def findProjects(self, parentId: int | None = None,
+    def findProjects(self,
+                     areaId: int | None = None,
                      includeInactive: bool = False):
         pass
 
@@ -33,7 +43,8 @@ class App:
         return y
 
     def findTasks(self, 
-                  projectId: int, 
+                  projectId: int | None = None, 
+                  taskId: int | None = None, 
                   includeInactive: bool = False):
         pass
 
@@ -43,7 +54,7 @@ class App:
         return y
 
     def findComments(self, 
-                     taskId: int,
+                     taskId: int | None = None,
                      includeInactive: bool = False):
         pass
 
