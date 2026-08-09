@@ -6,6 +6,7 @@ class CommentBase(SQLModel):
     author: str = Field(index=True)
     contents: str = Field(index=True)
     taskId: int = Field(index=True)
+    format: str = Field(index=True, default='text')
     createTime: str = Field(index=True, default='')
     updateTime: str = Field(index=True, default='')
 
