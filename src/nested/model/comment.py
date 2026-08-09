@@ -1,11 +1,26 @@
-from sqlmodel import SQLModel
+from sqlmodel import SQLModel, Field
 from .utilities import Date, DateTime
 
 
-@dataclass
-class Comment(SQLModel):
-    author: str
-    contents: str
-    taskId: int
-    createTime: DateTime
-    updateTime: DateTime
+class CommentBase(SQLModel):
+    author: str = Field(index=True)
+    contents: str = Field(index=True)
+    taskId: int = Field(index=True)
+    createTime: str = Field(index=True, default='')
+    updateTime: str = Field(index=True, default='')
+
+class Comment(CommentBase, table=True):
+    id: int = Field(primary_key=True)
+
+class CommentPublic(CommentBase):
+    id: int
+
+class CommentCreate(CommentBase):
+    pass
+
+class CommentUpdate(SQLModel):
+    author: str | None = None
+    contents: str | None = None
+    taskId: int | None = None
+    createTime: str | None = None
+    updateTime: str | None = None

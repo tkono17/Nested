@@ -41,10 +41,13 @@ class DateTime:
             y = (Date(d), Time(t))
         return y
 
+    def encode(self, d, t):
+        self.text = f'{d}T{t}'
+
 @dataclass
 class Status(IntEnum):
     NOT_STARTED = 1
     ACTIVE = 2
     DONE = 3
-    INVALID = 4
-    TERMINATED = 5
+    CLOSED = 4
+    INVALID = 5

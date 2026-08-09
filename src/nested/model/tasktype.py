@@ -15,7 +15,6 @@ class TaskTypePublic(TaskTypeBase):
 class TaskTypeCreate(TaskTypeBase):
     pass
 
-class TaskTypeUpdate(TaskTypeBase):
+class TaskTypeUpdate(SQLModel):
     name: str | None = None
     description: str | None = None
-    
