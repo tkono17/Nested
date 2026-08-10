@@ -7,8 +7,10 @@ authors = [
 ]
 require-python = ">=3.10"
 dependencies = [
+    "dotenv",
     "typer",
     "import-linter",
+    "sqlmodel",
     "fastapi",
     "appbasics @ git+https://github.com/tkono17/appbasics"
 ]

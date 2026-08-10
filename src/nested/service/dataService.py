@@ -11,10 +11,10 @@ from .tables import (
     CommentRepository,
 )
 
-class NestedDbService:
-    def __init__(self, engine: Engine):
+class NestedDbService(RdbService):
+    def __init__(self, engine: Engine = None):
         self.engine = engine
-        self.tables = {}
+        self.init()
 
     def init(self):
         self.tables['area'] = AreaRepository()
@@ -27,5 +27,5 @@ class NestedDbService:
         self.getProjectByName = partial(self.tables['project'].getByName, engine=self.engine)
         self.getTaskTypeByName = partial(self.tables['tasktype'].getByName, engine=self.engine)
         self.getTaskByProjectId = partial(self.tables['task'].getByProjectId, engine=self.engine)
-        self.getTaskByParentTaskId = partial(self.tables['task'].getByParentTaskId, engine=self.engine)
+        self.getTaskByParentId = partial(self.tables['task'].getByParentId, engine=self.engine)
         self.getCommentByTaskId = partial(self.tables['comment'].getByTaskId, engine=self.engine)

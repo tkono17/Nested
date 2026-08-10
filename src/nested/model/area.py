@@ -4,8 +4,8 @@ from .utilities import Status
 
 class AreaBase(SQLModel):
     name: str = Field(index=True)
-    description: str = Field(index=True)
-    statusId: int = Field(index=True, default=Status.NOT_STARTED)
+    domain: str = Field(index=True)
+    description: str = Field(index=True, default='')
     createTime: str | None = Field(index=True, default=None)
     updateTime: str | None = Field(index=True, default=None)
 
@@ -18,9 +18,9 @@ class AreaPublc(AreaBase):
 class AreaCreate(AreaBase):
     pass
 
-class AreaUpdate(AreaBase):
+class AreaUpdate(SQLModel):
     name: str | None = None
+    domain: str | None = None
     description: str | None = None
-    statusId: int | None = None
     createTime: str | None = None
     updateTime: str | None = None

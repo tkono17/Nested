@@ -49,9 +49,9 @@ class TaskRepository(apb.TableAccess):
             return statement.where(self.TDb.projectId == projectId)
         return self.get(engine, modifier)
 
-    def getByParentTaskId(self, parentTaskId: int, engine: Engine):
+    def getByParentId(self, parentId: int, engine: Engine):
         def modifier(statement):
-            return statement.where(self.TDb.parentTaskId == parentTaskId)
+            return statement.where(self.TDb.parentId == parentId)
         return self.get(engine, modifier)
     pass
 

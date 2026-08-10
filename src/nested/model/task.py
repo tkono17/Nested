@@ -10,7 +10,7 @@ class TaskBase:
     type: str
     statusId: int
     projectId: int
-    parentTaskId: int | None = None
+    parentId: int | None = None
     startDate: str | None = None
     dueDate: str | None = None
     createTime: str | None = None
@@ -32,7 +32,7 @@ class TaskUpdate(SQLModel):
     type: str | None = None
     statusId: int | None = None
     projectId: int | None = None
-    parentTaskId: int | None = None
+    parentId: int | None = None
     startDate: str | None = None
     dueDate: str | None = None
     createTime: str | None = None
