@@ -1,3 +1,4 @@
+from typing import Optional
 from enum import Enum
 from sqlmodel import SQLModel, Field
 from .utilities import Status
@@ -13,7 +14,7 @@ class ProjectBase(SQLModel):
     updateTime: str | None = Field(index=True, default=None)
 
 class Project(ProjectBase, table=True):
-    id: int = Field(primary_key=True)
+    id: Optional[int] = Field(primary_key=True, default=None)
 
 class ProjectPublic(ProjectBase):
     id: int

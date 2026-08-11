@@ -1,6 +1,6 @@
+from typing import Optional
 from sqlmodel import SQLModel, Field
 from .utilities import Status
-
 
 class AreaBase(SQLModel):
     name: str = Field(index=True)
@@ -10,9 +10,9 @@ class AreaBase(SQLModel):
     updateTime: str | None = Field(index=True, default=None)
 
 class Area(AreaBase, table=True):
-    id: int = Field(primary_key=True)
+    id: Optional[int] = Field(primary_key=True, default=None)
 
-class AreaPublc(AreaBase):
+class AreaPublic(AreaBase):
     id: int
 
 class AreaCreate(AreaBase):

@@ -1,3 +1,4 @@
+from typing import Optional
 from enum import Enum
 from sqlmodel import SQLModel, Field
 
@@ -7,7 +8,7 @@ class TaskTypeBase(SQLModel):
     description: str = Field(index=True, default='')
 
 class TaskType(TaskTypeBase, table=True):
-    id: int = Field(primary_key=True)
+    id: Optional[int] = Field(primary_key=True, default=None)
 
 class TaskTypePublic(TaskTypeBase):
     id: int

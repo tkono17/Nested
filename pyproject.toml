@@ -11,9 +11,14 @@ dependencies = [
     "typer",
     "import-linter",
     "sqlmodel",
+    "fire",
     "fastapi",
     "appbasics @ git+https://github.com/tkono17/appbasics"
 ]
+
+[project.scripts]
+#nested-cli = "nested.cli.main:main"
+nested-db = "nested.cli.nestedDb:main"
 
 [build-system]
 requires = [ "hatchling" ]
@@ -25,5 +30,3 @@ allow-direct-references = true
 [tool.hatch.build.targets.wheel]
 packages = [ "src/nested" ]
 
-[project.scripts]
-nested-cli = "nested.cli.main:main"

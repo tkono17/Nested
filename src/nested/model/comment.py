@@ -1,3 +1,4 @@
+from typing import Optional
 from sqlmodel import SQLModel, Field
 from .utilities import Date, DateTime
 
@@ -11,7 +12,7 @@ class CommentBase(SQLModel):
     updateTime: str = Field(index=True, default='')
 
 class Comment(CommentBase, table=True):
-    id: int = Field(primary_key=True)
+    id: Optional[int] = Field(primary_key=True, default=None)
 
 class CommentPublic(CommentBase):
     id: int

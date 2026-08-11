@@ -1,9 +1,9 @@
 from __future__ import annotations
 from sqlalchemy import Engine
 from functools import partial
-from appbasics import RdbService
+from appbasics import RdbAccess
 
-from .tables import (
+from .repositories import (
     AreaRepository,
     ProjectRepository,
     TaskTypeRepository,
@@ -11,8 +11,9 @@ from .tables import (
     CommentRepository,
 )
 
-class NestedDbService(RdbService):
+class NestedDbService(RdbAccess):
     def __init__(self, engine: Engine = None):
+        super().__init__()
         self.engine = engine
         self.init()
 

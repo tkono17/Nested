@@ -1,11 +1,13 @@
-[import-linter]
-root_packages = nested
+[importlinter]
+root_package = nested
+source_dir = src
 
-[import-linter:contract:layers:my-layers]
-name = my-layers
-layers = 
+[importlinter:contract:layered_architecture]
+name = Layered architecture
+type = layers
+containers = nested
+layers =
   cli
   app
   service
   model
-  
