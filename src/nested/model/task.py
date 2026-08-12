@@ -1,6 +1,7 @@
 from typing import Optional
 from enum import Enum
 from sqlmodel import SQLModel, Field
+from sqlalchemy import UniqueConstraint
 from .utilities import Status
 
 # Task type: design, development, test, validation, bookkeeping, documentation, debug, thinking
@@ -18,6 +19,9 @@ class TaskBase(SQLModel):
     updateTime: str | None = None
 
 class Task(TaskBase, table=True):
+    __table_args__ = (
+        UniqueConstraint('name', 'projectId', 'parentId', name='uq_project_parent_task'),
+    )
     id: Optional[int] = Field(primary_key=True, default=None)
 
 class TaskPublic(TaskBase):

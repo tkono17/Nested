@@ -1,5 +1,6 @@
 from typing import Optional
 from sqlmodel import SQLModel, Field
+from sqlalchemy import UniqueConstraint
 from .utilities import Status
 
 class AreaBase(SQLModel):
@@ -10,6 +11,9 @@ class AreaBase(SQLModel):
     updateTime: str | None = Field(index=True, default=None)
 
 class Area(AreaBase, table=True):
+    __table_args__ = (
+        UniqueConstraint('name', 'domain', name='uq_domain_area'),
+    )
     id: Optional[int] = Field(primary_key=True, default=None)
 
 class AreaPublic(AreaBase):

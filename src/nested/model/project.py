@@ -1,6 +1,7 @@
 from typing import Optional
 from enum import Enum
 from sqlmodel import SQLModel, Field
+from sqlalchemy import UniqueConstraint
 from .utilities import Status
 
 class ProjectBase(SQLModel):
@@ -14,6 +15,9 @@ class ProjectBase(SQLModel):
     updateTime: str | None = Field(index=True, default=None)
 
 class Project(ProjectBase, table=True):
+    __table_args__ = (
+        UniqueConstraint('name', 'areaId', name='uq_area_project'),
+    )
     id: Optional[int] = Field(primary_key=True, default=None)
 
 class ProjectPublic(ProjectBase):
